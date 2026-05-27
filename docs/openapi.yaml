@@ -1,0 +1,122 @@
+openapi: 3.0.3
+info:
+  title: ScaleTrip Platform API
+  version: 0.8.2
+  description: |
+    ScaleTrip Cloud backend API — booking infrastructure for travel agencies.
+    
+    ⚠️ This spec is INCOMPLETE. booking-service endpoints are documented.
+    payment-service and notification-service endpoints are TODO.
+servers:
+  - url: http://localhost:3000/api
+    description: Local (via gateway)
+
+paths:
+  /bookings:
+    get:
+      summary: Get bookings by tenant
+      description: |
+        Returns ALL bookings for the authenticated tenant.
+        ⚠️ WARNING — no pagination. Times out above 8,000 rows. See SCLT-002.
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: tenant_id
+          in: query
+          required: true
+          schema:
+            type: string
+          description: |
+            ⚠️ BOLA VULNERABILITY — tenant_id should come from JWT, not query param.
+            Currently any authenticated user can query any tenant's bookings. (SCLT-005)
+      responses:
+        '200':
+          description: List of bookings
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Booking'
+                  count:
+                    type: integer
+        '401':
+          description: Unauthorised
+        '500':
+          description: Query timeout (known issue — see SCLT-002)
+
+  /auth/login:
+    post:
+      summary: Login and get access token
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password]
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: JWT access token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  access_token:
+                    type: string
+                  token_type:
+                    type: string
+                    example: Bearer
+                  expires_in:
+                    type: integer
+                    example: 900
+                  refresh_token:
+                    type: string
+                    nullable: true
+                    description: Always null — refresh flow not implemented (SCLT-004)
+
+  /auth/refresh:
+    post:
+      summary: Refresh access token
+      description: NOT IMPLEMENTED — returns 501 (SCLT-004)
+      responses:
+        '501':
+          description: Not implemented
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    Booking:
+      type: object
+      properties:
+        id:
+          type: integer
+        bookingRef:
+          type: string
+        tenantId:
+          type: string
+        route:
+          type: string
+        amount:
+          type: number
+        status:
+          type: string
+          enum: [PENDING, CONFIRMED, CANCELLED, REFUNDED]
+        isDuplicate:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
