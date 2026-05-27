@@ -1,0 +1,110 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: scaletrip
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./scripts/seed.sql:/docker-entrypoint-initdb.d/seed.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+  booking-service:
+    build:
+      context: ./services/booking-service
+      # TODO: fix Dockerfile — production stage is missing
+      target: development
+    ports:
+      - "3001:3001"
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/scaletrip
+      - REDIS_URL=redis://redis:6379
+      - JWT_SECRET=${JWT_SECRET}
+      - NODE_ENV=development
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./services/booking-service:/app
+      - /app/node_modules
+
+  auth-service:
+    build:
+      context: ./services/auth-service
+      target: development
+    ports:
+      - "3002:3002"
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/scaletrip
+      - JWT_SECRET=${JWT_SECRET}
+      - JWT_EXPIRY=15m
+      # WARNING: This must be false in production — see SCLT-004
+      - JWT_IGNORE_EXPIRY=false
+      - NODE_ENV=development
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  payment-service:
+    build:
+      context: ./services/payment-service
+      target: development
+    ports:
+      - "3003:3003"
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/scaletrip
+      - REDIS_URL=redis://redis:6379
+      # FIXME: webhook retry config — fixed interval causing storm
+      - WEBHOOK_RETRY_INTERVAL_MS=500
+      - WEBHOOK_MAX_RETRIES=10
+      - NODE_ENV=development
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  gateway:
+    build:
+      context: ./gateway
+      target: development
+    ports:
+      - "3000:3000"
+    environment:
+      - BOOKING_SERVICE_URL=http://booking-service:3001
+      - AUTH_SERVICE_URL=http://auth-service:3002
+      - PAYMENT_SERVICE_URL=http://payment-service:3003
+      - NODE_ENV=development
+    depends_on:
+      - booking-service
+      - auth-service
+
+  # TODO: Add prometheus and grafana services before go-live
+  # prometheus:
+  #   image: prom/prometheus:latest
+  # grafana:
+  #   image: grafana/grafana:latest
+
+volumes:
+  postgres_data:
