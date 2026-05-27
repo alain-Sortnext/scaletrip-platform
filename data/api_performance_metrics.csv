@@ -1,0 +1,13 @@
+week_num,p50_latency_ms,p95_latency_ms,p99_latency_ms,request_volume,requests_per_second,error_rate_pct,db_conn_pool_exhausted,slow_query_log,memory_pressure_mb
+1,9,90,170,107300,48,0.24,false,,579
+2,28,325ms,488,105476,53,0.226,false,,440
+3,50,325,470,133265,45,0.06,false,,568
+4,29,312,530,97749,57,0.01,false,,716
+5,52,350ms,558,112121,105,0.191,false,,550
+6,30,318,519,144372,87,0.289,false,,802
+7,89,687,1098,99317,64,0.223,false,,467
+8,105,861ms,1326,157681,65,0.214,false,,596
+9,364,3139,5419,283255,212,2.372,true,SELECT * FROM bookings WHERE tenant_id=$1 ORDER BY created_at DESC (no index),2208
+10,594,4247,5961,324463,225,0.958,true,SELECT * FROM bookings WHERE tenant_id=$1 ORDER BY created_at DESC (no index),1956
+11,500,3570ms,5873,325215,215,1.114,true,SELECT * FROM bookings WHERE tenant_id=$1 ORDER BY created_at DESC (no index),1849
+12,16,138,206,142407,92,0.108,false,,453
