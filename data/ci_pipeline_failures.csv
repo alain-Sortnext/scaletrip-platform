@@ -1,0 +1,93 @@
+run_id,created_at,branch,trigger,status,failed_stage,duration_s,error_message,week_num
+RUN-2000,2026-01-02T17:54:00,main,push,failed,build,142,ESLint: 14 errors in booking-service/src/,1
+RUN-2001,2026-01-02T20:34:00,fix/ci-eslint,schedule,SUCCESS,,202,,1
+RUN-2002,2026-01-03T15:53:00,main,manual,success,,462,,1
+RUN-2003,2026-01-04T13:49:00,feature/auth-refresh,pull_request,FAILED,security-scan,62,ESLint: 14 errors in booking-service/src/,1
+RUN-2004,2026-01-05T09:24:00,fix/ci-eslint,push,SUCCESS,,299,,1
+RUN-2005,2026-01-05T11:23:00,,manual,SUCCESS,,366,,1
+RUN-2006,2026-01-06T08:38:00,feature/auth-refresh,pull_request,SUCCESS,,316,,1
+RUN-2007,2026-01-06T11:29:00,hotfix/dup-booking,pull_request,Success,,305,,1
+RUN-2008,2026-01-07T13:43:00,feature/auth-refresh,schedule,SUCCESS,,465,,1
+RUN-2009,2026-01-07T16:25:00,fix/ci-eslint,pull_request,FAILED,lint,53,kubectl: ImagePullBackOff on booking-service,1
+RUN-2010,2026-01-08T16:13:00,develop,push,SUCCESS,,470,,1
+RUN-2011,2026-01-08T10:16:00,feature/ts-migration,manual,Success,,414,,1
+RUN-2012,2026-01-09T14:47:00,feature/auth-refresh,pull_request,success,,467,,2
+RUN-2013,2026-01-09T17:14:00,hotfix/dup-booking,manual,Success,,384,,2
+RUN-2014,2026-01-10T09:09:00,main,manual,success,,204,,2
+RUN-2015,2026-01-11T08:24:00,fix/ci-eslint,pull_request,Success,,396,,2
+RUN-2016,2026-01-12T06:43:00,hotfix/dup-booking,manual,SUCCESS,,308,,2
+RUN-2017,2026-01-12T15:27:00,fix/ci-eslint,schedule,failed,security-scan,132,ESLint: 14 errors in booking-service/src/,2
+RUN-2018,2026-01-13T14:32:00,,manual,success,,181,,2
+RUN-2019,2026-01-13T22:38:00,fix/ci-eslint,push,success,,332,,2
+RUN-2020,2026-01-14T22:58:00,fix/ci-eslint,schedule,failed,test,86,npm ERR! Cannot find module '@scaletrip/shared',2
+RUN-2021,2026-01-14T17:56:00,feature/ts-migration,schedule,failed,security-scan,49,ESLint: 14 errors in booking-service/src/,2
+RUN-2022,2026-01-15T08:05:00,main,pull_request,SUCCESS,,303,,2
+RUN-2023,2026-01-15T10:08:00,fix/ci-eslint,manual,Success,,215,,2
+RUN-2024,2026-01-16T14:33:00,hotfix/dup-booking,manual,Success,,264,,3
+RUN-2025,2026-01-16T17:28:00,feature/auth-refresh,pull_request,FAILED,test,124,Docker build failed: COPY booking-service,3
+RUN-2026,2026-01-17T13:04:00,main,manual,Success,,306,,3
+RUN-2027,2026-01-18T08:45:00,hotfix/dup-booking,pull_request,FAILED,lint,101,ESLint: 14 errors in booking-service/src/,3
+RUN-2028,2026-01-19T22:15:00,main,push,failed,test,129,ESLint: 14 errors in booking-service/src/,3
+RUN-2029,2026-01-19T10:46:00,develop,manual,SUCCESS,,456,,3
+RUN-2030,2026-01-20T19:12:00,develop,manual,Success,,422,,3
+RUN-2031,2026-01-20T17:27:00,feature/auth-refresh,push,success,,400,,3
+RUN-2032,2026-01-21T09:03:00,fix/ci-eslint,manual,SUCCESS,,207,,3
+RUN-2033,2026-01-21T13:12:00,fix/ci-eslint,schedule,SUCCESS,,235,,3
+RUN-2034,2026-01-22T11:17:00,develop,manual,success,,396,,3
+RUN-2035,2026-01-22T06:05:00,feature/ts-migration,push,FAILED,test,70,ESLint: 14 errors in booking-service/src/,3
+RUN-2036,2026-01-23T21:13:00,feature/ts-migration,pull_request,success,,428,,4
+RUN-2037,2026-01-23T06:24:00,develop,push,SUCCESS,,374,,4
+RUN-2038,2026-01-24T21:09:00,feature/queue-refactor,manual,SUCCESS,,396,,4
+RUN-2039,2026-01-25T07:47:00,develop,schedule,success,,209,,4
+RUN-2040,2026-01-26T21:32:00,main,push,SUCCESS,,479,,4
+RUN-2041,2026-01-26T08:54:00,main,pull_request,Success,,440,,4
+RUN-2042,2026-01-27T13:25:00,hotfix/dup-booking,push,success,,214,,4
+RUN-2043,2026-01-27T08:26:00,hotfix/dup-booking,pull_request,success,,200,,4
+RUN-2044,2026-01-28T14:25:00,,pull_request,FAILED,build,125,Jest: 3 tests failed in auth.test.ts,4
+RUN-2045,2026-01-28T08:00:00,feature/ts-migration,schedule,success,,341,,4
+RUN-2046,2026-01-29T12:32:00,main,push,SUCCESS,,455,,4
+RUN-2047,2026-01-29T13:23:00,feature/queue-refactor,pull_request,SUCCESS,,215,,4
+RUN-2048,2026-01-30T15:39:00,feature/ts-migration,pull_request,SUCCESS,,458,,5
+RUN-2049,2026-01-30T15:59:00,feature/auth-refresh,push,Success,,463,,5
+RUN-2050,2026-01-31T09:56:00,develop,push,Success,,315,,5
+RUN-2051,2026-02-01T12:45:00,feature/queue-refactor,pull_request,success,,324,,5
+RUN-2052,2026-02-02T22:31:00,feature/auth-refresh,pull_request,SUCCESS,,315,,5
+RUN-2053,2026-02-02T14:02:00,feature/auth-refresh,push,FAILED,lint,153,kubectl: ImagePullBackOff on booking-service,5
+RUN-2054,2026-02-03T14:10:00,fix/ci-eslint,schedule,success,,246,,5
+RUN-2055,2026-02-03T19:35:00,hotfix/dup-booking,manual,Success,,9847,,5
+RUN-2056,2026-02-04T07:53:00,main,push,success,,256,,5
+RUN-2057,2026-02-04T15:23:00,feature/ts-migration,pull_request,FAILED,security-scan,77,ESLint: 14 errors in booking-service/src/,5
+RUN-2058,2026-02-05T09:22:00,develop,schedule,success,,307,,5
+RUN-2059,2026-02-05T13:55:00,hotfix/dup-booking,manual,Success,,259,,5
+RUN-2060,2026-02-06T11:47:00,feature/ts-migration,pull_request,success,,192,,6
+RUN-2061,2026-02-06T14:10:00,fix/ci-eslint,manual,SUCCESS,,307,,6
+RUN-2062,2026-02-07T21:14:00,feature/ts-migration,push,Success,,199,,6
+RUN-2063,2026-02-08T13:14:00,feature/queue-refactor,manual,success,,336,,6
+RUN-2064,2026-02-09T14:55:00,feature/ts-migration,pull_request,success,,348,,6
+RUN-2065,2026-02-09T18:43:00,feature/queue-refactor,schedule,success,,440,,6
+RUN-2066,2026-02-10T14:11:00,main,schedule,Success,,239,,6
+RUN-2067,2026-02-10T09:38:00,,schedule,Success,,199,,6
+RUN-2068,2026-02-11T19:38:00,feature/auth-refresh,schedule,SUCCESS,,340,,6
+RUN-2069,2026-02-11T19:00:00,feature/queue-refactor,pull_request,failed,deploy,56,Jest coverage threshold not met (72% < 80%),6
+RUN-2070,2026-02-12T08:42:00,feature/queue-refactor,pull_request,Success,,400,,6
+RUN-2071,2026-02-12T15:32:00,feature/auth-refresh,schedule,SUCCESS,,243,,6
+RUN-2072,2026-02-13T10:12:00,feature/ts-migration,schedule,FAILED,deploy,120,npm ERR! Cannot find module '@scaletrip/shared',7
+RUN-2073,2026-02-13T06:19:00,hotfix/dup-booking,pull_request,FAILED,deploy,122,Docker build failed: COPY booking-service,7
+RUN-2074,2026-02-14T20:28:00,fix/ci-eslint,manual,FAILED,test,127,Docker build failed: COPY booking-service,7
+RUN-2075,2026-02-15T08:18:00,fix/ci-eslint,manual,failed,security-scan,88,Jest coverage threshold not met (72% < 80%),7
+RUN-2076,2026-02-16T12:09:00,feature/auth-refresh,pull_request,FAILED,lint,124,Jest: 3 tests failed in auth.test.ts,7
+RUN-2077,2026-02-16T08:29:00,develop,push,success,,423,,7
+RUN-2078,2026-02-17T18:15:00,feature/auth-refresh,pull_request,FAILED,security-scan,143,Docker build failed: COPY booking-service,7
+RUN-2079,2026-02-17T11:51:00,fix/ci-eslint,push,failed,lint,153,Jest: 3 tests failed in auth.test.ts,7
+RUN-2080,2026-02-18T10:51:00,fix/ci-eslint,pull_request,FAILED,lint,76,Docker build failed: COPY booking-service,7
+RUN-2081,2026-02-18T22:27:00,fix/ci-eslint,schedule,FAILED,security-scan,158,npm ERR! Cannot find module '@scaletrip/shared',7
+RUN-2082,2026-02-19T13:53:00,feature/ts-migration,manual,FAILED,test,111,kubectl: ImagePullBackOff on booking-service,7
+RUN-2083,2026-02-19T20:04:00,feature/auth-refresh,manual,FAILED,security-scan,106,tsc: Type error in shared/types/Booking.ts line 42,7
+RUN-2084,2026-02-20T08:08:00,feature/queue-refactor,schedule,FAILED,test,126,npm ERR! Cannot find module '@scaletrip/shared',8
+RUN-2085,2026-02-20T12:04:00,feature/auth-refresh,manual,failed,test,84,Jest coverage threshold not met (72% < 80%),8
+RUN-2086,2026-02-21T07:13:00,hotfix/dup-booking,schedule,FAILED,deploy,164,Docker build failed: COPY booking-service,8
+RUN-2087,2026-02-22T06:22:00,fix/ci-eslint,push,FAILED,deploy,142,Docker build failed: COPY booking-service,8
+RUN-2088,2026-02-23T13:17:00,hotfix/dup-booking,manual,FAILED,deploy,101,Docker build failed: COPY booking-service,8
+RUN-2089,2026-02-23T18:46:00,feature/ts-migration,push,FAILED,deploy,131,Jest coverage threshold not met (72% < 80%),8
+RUN-2090,2026-02-24T06:05:00,hotfix/dup-booking,pull_request,failed,deploy,51,Docker build failed: COPY booking-service,8
+RUN-2091,2026-02-24T11:03:00,develop,manual,Success,,416,,8
